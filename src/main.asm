@@ -25,8 +25,8 @@ puts:
 	or al, al			; check if char is null (exit condition)
 	jz .done			; chech for exit condition and exit if true
 
-	mov ah, 0x0E		; print the char
-	mov bh, 0x00		; page number (0)
+	mov ah, 0x0E			; print the char
+	mov bh, 0x00			; page number (0)
 	int 0x10			; interrupt 0x10 (video services)
 
 	jmp .loop			; loop
@@ -49,7 +49,7 @@ main:
 
 	; set up stack
 	mov ss, ax
-	mov sp, 0x7C00		; stack grows down from 0x7C00
+	mov sp, 0x7C00			; stack grows down from 0x7C00
 
 	; print message
 	mov si, msg_hello
@@ -67,5 +67,5 @@ msg_hello: db "Hello, World!", ENDL, 0
 
 
 ; pad out the file with zeros so it's 512 bytes
-times 510-($-$$) db 0	; $ is current address, $$ is start address
+times 510-($-$$) db 0			; $ is current address, $$ is start address
 dw 0AA55h				; the standard PC boot signature for BIOS
